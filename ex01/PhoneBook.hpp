@@ -6,7 +6,7 @@
 /*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/18 12:34:05 by mcreus            #+#    #+#             */
-/*   Updated: 2023/08/18 12:57:39 by mcreus           ###   ########.fr       */
+/*   Updated: 2023/08/21 20:12:08 by mcreus           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <iostream>
 # include <iomanip>
+# include "Contact.hpp"
 
 class PhoneBook
 {
