@@ -1,79 +1,64 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Contact.cpp                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 13:04:12 by mcreus            #+#    #+#             */
-/*   Updated: 2023/08/21 20:21:29 by mcreus           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "Contact.hpp"
 #include "PhoneBook.hpp"
 
-Contact::Contact(void)
+Contact::Contact()
 {
-    return ;
+	return ;
 }
 
-Contact::~Contact(void)
+Contact::~Contact()
 {
-    return ;
+	return ;
 }
 
-void    Contact::create(void)
+std::string	Contact::Answer(std::string str)
 {
-    this->_first_name = this->_add_info("Entrez le prenom : ");
-    this->_last_name = this->_add_info("Entrez le nom : ");
-    this->_nickname = this->_add_info("Entrez le surnom : ");
-    this->_phone_number = this->_add_info("Entrez le numero de telephone : ");
-    this->_darkest_secret = this->_add_info("Entrez le secret le plus sombre : ");
-}
+	std::string	Answer;
 
-std::string	Contact::_add_info(std::string str) const
-{
-	std::string	info;
-	
-	while (info.find_first_not_of(" \t\n\v\f\r") == std::string::npos)
+	while (Answer.find_first_not_of("\t\n\v\r\f") == std::string::npos)
 	{
 		std::cout << str;
-		std::getline(std::cin, info);
+		getline(std::cin, Answer);
 	}
-	return (info);
+	return (Answer);
+	/*std::getline(std::cin, Answer);
+
+	std::cout << "Entrez un Prenom" << std::endl;
+	std::cin >> _FirstName;
+	std::cout << "Entrez un Nom" << std::endl;
+	std::cin >> _LastName;
+	std::cout << "Quel est son surnom ?" << std::endl;
+	std::cin >> _NickName;
+	std::cout << "Entrez son numero de telephone (sans espace et sans point)" << std::endl;
+	std::cin >> _PhoneNumber;
+	std::cout << "Veuillez indiquer son secret le plus sombre !!!" << std::endl;*/
 }
 
-void	Contact::display_resume(void) const
+void	Contact::Create()
 {
-	std::cout << std::setw(10) << this->_format_info(this->_first_name) << "|";
-	std::cout << std::setw(10) << this->_format_info(this->_last_name) << "|";
-	std::cout << std::setw(10) << this->_format_info(this->_nickname) << "|";
-	std::cout << std::setw(10) << this->_format_info(this->_phone_number) << "|";
-	std::cout << std::setw(10) << this->_format_info(this->_darkest_secret) << "|";
+	_FirstName = Answer("Entrez un Prenom :");
+	_LastName = Answer("Entrez un Nom :");
+	_NickName = Answer("Quel est le surnom ?");
+	_PhoneNumber = Answer("Entrez le numero de telephone :");
+	_DarkSecret = Answer("Veuillez indiquer son pire secret :");
+}
+
+void	Contact::Format() const
+{
+	std::cout << std::setw(10) << _FirstName << "|";
+	std::cout << std::setw(10) << _LastName << "|";
+	std::cout << std::setw(10) << _NickName << "|";
 	std::cout << std::endl;
 }
 
-std::string	Contact::_format_info(std::string info) const
+void	Contact::ResumeSearch() const
 {
-	if (info.empty() == true)
-		return ("vide");
-	if (info.size() >= 10)
-		return (info.substr(0, 9) + '.');
-	return (info);
-}
-
-void	Contact::display_all_infos(void) const
-{
-	if (this->_first_name.empty())
-	{
-		std::cout << "[WARNING!!!!] Contacts vides" << std::endl;
-		return ;
-	}
-	std::cout << "[INFORMATIONS SUR LE CONTACT]" << std::endl;
-	std::cout << "Prenom : " << this->_first_name << std::endl;
-	std::cout << "Nom : " << this->_last_name << std::endl;
-	std::cout << "Surnom : " << this->_nickname << std::endl;
-	std::cout << "Numero de telephone : " << this->_phone_number << std::endl;
-	std::cout << "secret le plus lourd : " << this->_darkest_secret << std::endl;	
+	if (_FirstName.empty() == true)
+		std::cout << "LISTE VIDE" << std::endl;
+	std::cout << "[VOICI LE CONTACT QUE VOUS AVEZ DEMADE]" << std::endl;
+	std::cout << "Prenom : " << _FirstName << std::endl;
+	std::cout << "Nom : " << _LastName << std::endl;
+	std::cout << "Surnom : " << _NickName << std::endl;
+	std::cout << "Numero de Telephone : " << _PhoneNumber << std::endl;
+	std::cout << "Son plus gros secret : " << _DarkSecret << std::endl;
 }

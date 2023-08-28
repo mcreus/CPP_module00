@@ -1,36 +1,25 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 12:55:19 by mcreus            #+#    #+#             */
-/*   Updated: 2023/08/18 13:03:50 by mcreus           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
-#include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include "PhoneBook.hpp"
 
-int main(void)
+int	main()
 {
-    PhoneBook phoneBook;
-    std::string command;
-    
-    std::cout <<"Hello and welcome to you phonebook, Please enter a command (ADD, SEARCH or EXIT):" << std::endl;
-    while (1)
-    {
-        std::cout << "Your command: ";
-        std::getline(std::cin, command);
-        if (command == "ADD")
-            phoneBook.addContact();
-        else if (command == "SEARCH")
-            phoneBook.searchContact();
-        else if (command == "EXIT")
-            break;
-        else
-            std::cout << "Invalid command, please try again." << std::endl;
-    }
-    return (0);
+	PhoneBook	PhoneBook;
+	Contact		Contact;
+	std::string	cmd;
+
+	std::cout << "Bonjour et bienvenue sur le PhoneBook de Max" << std::endl;
+	while (42)
+	{
+		std::cout << "Entrez la commande que vous souhaitez faire (ADD, SEARCH or EXIT) : " << std::endl;
+		std::getline(std::cin, cmd);
+		if (cmd == "ADD")
+			PhoneBook.Add_Contact();
+		if (cmd == "SEARCH")
+			PhoneBook.Search_Contact();
+		if (cmd == "EXIT")
+			break ;
+		else
+			std::cout << " Votre commande n'est pas une commande valide, veuillez entrer un des 3 choix proposes auparavant" << std::endl;
+	}
+	return (0);
 }

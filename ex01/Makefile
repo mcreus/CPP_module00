@@ -1,26 +1,31 @@
-NAME	=	Phonebook
+NAME	=	PhoneBook
+
 CC		=	c++
 CFLAGS	=	-Wall -Wextra -Werror -std=c++98
-RM 		=	rm -rf
 
-SRCS	=	PhoneBook.cpp \
-			Contact.cpp \
-			main.cpp
-
-INCLUDES =	PhoneBook.hpp \
-			Contact.hpp
-
+SRCS	=	Contact.cpp PhoneBook.cpp main.cpp
 OBJS	=	$(SRCS:.cpp=.o)
 
-all:		$(NAME)
+RM		=	rm -rf
 
-$(NAME):	$(OBJS) $(INCLUDES)
-			$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+.c.o:
+		$(CC) $(CFLAGS) -c $< -o $@
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+		@echo "\033[0;33m\nCOMPILATION DE PHONEBOOK\n"
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+		@echo "\033[1;32m\nCOMPILATION REUSSIE\n"
 
 clean:
-			$(RM) $(OBJS) $(NAME)
+		@echo "\033[0;31m\nDELETING OBJS\n"
+		@$(RM) $(OBJS)
+		@echo "\033[1;32m\nDONE\n"
 
-fclean:		clean
-			$(RM) $(NAME)
+fclean: clean
+		@echo "\033[0;31m\nDELETING PHONEBOOK\n"
+		@$(RM) $(NAME)
+		@echo "\033[1;32m\nDONE\n"
 
-re:			fclean all
+re: fclean all

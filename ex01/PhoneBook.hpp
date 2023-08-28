@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: mcreus <mcreus@student.42perpignan.fr>     +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/18 12:34:05 by mcreus            #+#    #+#             */
-/*   Updated: 2023/08/21 20:12:08 by mcreus           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
@@ -17,20 +5,19 @@
 # include <iomanip>
 # include "Contact.hpp"
 
-class PhoneBook
+class	PhoneBook
 {
-public:
-    PhoneBook(void);
-    ~PhoneBook(void);
+	public:
+		PhoneBook();
+		~PhoneBook();
 
-    void    addContact(void);
-    void    searchContact(void);
-    
-private:
+		void    Add_Contact();
+		void    Search_Contact();
+	private:
+		Contact _Contact[8];
+		int	_IdxContact;
+		int	_oldContact;
 
-    Contact _contacts[8];
-    int     _nbContacts;
-    int     _oldContact;
 };
 
 #endif
