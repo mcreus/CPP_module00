@@ -17,6 +17,7 @@ class	Contact
 		void	resumeSearch() const;
 		void	format() const;
         int    emptyContact() const;
+        std::string fullContact(std::string str);
 	private:
 		std::string	_firstName;
 		std::string	_lastName;

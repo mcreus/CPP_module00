@@ -15,7 +15,10 @@ int	main()
 		if (cmd == "ADD")
 			PhoneBook.addContact();
 		else if (cmd == "SEARCH")
+        {
+            PhoneBook.resumeContact();
 			PhoneBook.searchContact();
+        }
 		else if (cmd == "EXIT")
 			break ;
 		else

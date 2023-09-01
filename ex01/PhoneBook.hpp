@@ -19,7 +19,6 @@ class	PhoneBook
 	private:
 		Contact _contact[8];
 		int	_idxContact;
-		int	_oldContact;
 
 };
 

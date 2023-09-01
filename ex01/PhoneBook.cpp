@@ -3,8 +3,7 @@
 
 PhoneBook::PhoneBook()
 {
-    _idxContact = 1;
-    _oldContact = 1;
+    _idxContact = 0;
     return ;
 }
 
@@ -19,8 +18,8 @@ void    PhoneBook::addContact()
 
     std::cout << "L'index de votre contact est : " << _idxContact << std::endl;
     newContact.create();
-    if (_idxContact >= 9)
-        _idxContact = 1;
+    if (_idxContact >= 8)
+        _idxContact = 0;
     _contact[_idxContact] = newContact;
     _idxContact++;
 }
@@ -28,38 +27,30 @@ void    PhoneBook::addContact()
 void    PhoneBook::searchContact()
 {
     std::string whatContact;
-    PhoneBook   phoneBook;
     
-    phoneBook.resumeContact();
     std::cout << "Entrez un index de recherche :" << std::endl;
     std::getline(std::cin, whatContact);
-    if (_idxContact == false)
+    if (whatContact[0] >= '0' && whatContact[0] <= '7') 
     {
-        std::cout << "INDEX CONTACT ERRONE, ENTREZ UN NOUVEL INDEX" << std::endl;
-        std::cin >> _idxContact;
+        if (_contact[whatContact[0] - 48].emptyContact() == 1)
+            std::cout << "ERREUR! INDEX VIDE" << std::endl;
+        else
+            _contact[whatContact[0] - 48].resumeSearch();
     }
     else
-    {
-        if (_contact[_idxContact].emptyContact() == 1)
-        {
-            std::cout << "MERCI DE REMPLIR L'INDEX D'UN CONTACT PLEIN!" << std::endl;
-            std::cin >> _idxContact;
-        }
-        else
-            _contact[_idxContact].resumeSearch();
-    }
+        std::cout << "ERREUR INDEX NON VALIDE " << std::endl;
 }
 
 void    PhoneBook::resumeContact()
 {
-    while (_oldContact < 9)
+    int oldContact;
+
+    oldContact = 0;
+    while (oldContact < 8)
     {
-        if (_contact[_oldContact].emptyContact() == 1)
-        {
-            std::cout << _oldContact << "|";
-            _contact[_oldContact].format();
-        }
-        _oldContact++;
+        std::cout << std::setw(10) << oldContact << "|";
+        _contact[oldContact].format();
         std::cout << std::endl;
+        oldContact++;
     }
 }
