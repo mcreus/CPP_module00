@@ -11,54 +11,49 @@ Contact::~Contact()
 	return ;
 }
 
-std::string	Contact::Answer(std::string str)
+std::string	Contact::answer(std::string str)
 {
-	std::string	Answer;
+	std::string	answer;
 
-	while (Answer.find_first_not_of("\t\n\v\r\f") == std::string::npos)
+    while (answer.find_first_not_of("\n\t") == std::string::npos)
 	{
-		std::cout << str;
-		getline(std::cin, Answer);
-	}
-	return (Answer);
-	/*std::getline(std::cin, Answer);
-
-	std::cout << "Entrez un Prenom" << std::endl;
-	std::cin >> _FirstName;
-	std::cout << "Entrez un Nom" << std::endl;
-	std::cin >> _LastName;
-	std::cout << "Quel est son surnom ?" << std::endl;
-	std::cin >> _NickName;
-	std::cout << "Entrez son numero de telephone (sans espace et sans point)" << std::endl;
-	std::cin >> _PhoneNumber;
-	std::cout << "Veuillez indiquer son secret le plus sombre !!!" << std::endl;*/
+        std::cout << str;
+	    getline(std::cin, answer);
+    }
+	return (answer);
 }
 
-void	Contact::Create()
+void	Contact::create()
 {
-	_FirstName = Answer("Entrez un Prenom :");
-	_LastName = Answer("Entrez un Nom :");
-	_NickName = Answer("Quel est le surnom ?");
-	_PhoneNumber = Answer("Entrez le numero de telephone :");
-	_DarkSecret = Answer("Veuillez indiquer son pire secret :");
+	_firstName = answer("Entrez un Prenom :");
+	_lastName = answer("Entrez un Nom :");
+	_nickName = answer("Quel est le surnom ?");
+	_phoneNumber = answer("Entrez le numero de telephone :");
+	_darkSecret = answer("Veuillez indiquer son pire secret :");
 }
 
-void	Contact::Format() const
+void	Contact::format() const
 {
-	std::cout << std::setw(10) << _FirstName << "|";
-	std::cout << std::setw(10) << _LastName << "|";
-	std::cout << std::setw(10) << _NickName << "|";
-	std::cout << std::endl;
+    std::cout << std::setw(10) << _firstName << "|";
+	std::cout << std::setw(10) << _lastName << "|";
+	std::cout << std::setw(10) << _nickName << "|";
+    std::cout << std::endl;
 }
 
-void	Contact::ResumeSearch() const
+void	Contact::resumeSearch() const
 {
-	if (_FirstName.empty() == true)
-		std::cout << "LISTE VIDE" << std::endl;
-	std::cout << "[VOICI LE CONTACT QUE VOUS AVEZ DEMADE]" << std::endl;
-	std::cout << "Prenom : " << _FirstName << std::endl;
-	std::cout << "Nom : " << _LastName << std::endl;
-	std::cout << "Surnom : " << _NickName << std::endl;
-	std::cout << "Numero de Telephone : " << _PhoneNumber << std::endl;
-	std::cout << "Son plus gros secret : " << _DarkSecret << std::endl;
+	std::cout << "| VOICI LE CONTACT QUE VOUS AVEZ DEMADE |" << std::endl;
+    std::cout << "Prenom : " << _firstName << std::endl;
+	std::cout << "Nom : " << _lastName << std::endl;
+    std::cout << "Surnom : " << _nickName << std::endl;
+	std::cout << "Numero de Telephone : " << _phoneNumber << std::endl;
+	std::cout << "Son plus gros secret : " << _darkSecret << std::endl;
+}
+
+int    Contact::emptyContact() const
+{
+    if (_firstName.empty() == true)
+        return (1);
+    else
+        return(0);
 }

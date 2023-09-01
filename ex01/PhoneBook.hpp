@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <iomanip>
+# include <string>
+# include <cstddef>
 # include "Contact.hpp"
 
 class	PhoneBook
@@ -11,11 +13,12 @@ class	PhoneBook
 		PhoneBook();
 		~PhoneBook();
 
-		void    Add_Contact();
-		void    Search_Contact();
+		void    addContact();
+		void    searchContact();
+        void    resumeContact();
 	private:
-		Contact _Contact[8];
-		int	_IdxContact;
+		Contact _contact[8];
+		int	_idxContact;
 		int	_oldContact;
 
 };

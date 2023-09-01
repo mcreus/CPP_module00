@@ -3,6 +3,8 @@
 
 # include <iostream>
 # include <iomanip>
+# include <cstddef>
+# include <string>
 
 class	Contact
 {
@@ -10,16 +12,17 @@ class	Contact
 		Contact();
 		~Contact();
 
-		void	Create();
-		std::string	Answer(std::string str);
-		void	ResumeSearch();
-		void	Format();
+		void	create();
+		std::string	answer(std::string str);
+		void	resumeSearch() const;
+		void	format() const;
+        int    emptyContact() const;
 	private:
-		std::string	_FirstName;
-		std::string	_LastName;
-		std::string	_NickName;
-		std::string	_PhoneNumber;
-		std::string	_DarkSecret;
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickName;
+		std::string	_phoneNumber;
+		std::string	_darkSecret;
 };
 
 #endif

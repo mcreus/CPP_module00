@@ -13,10 +13,10 @@ int	main()
 		std::cout << "Entrez la commande que vous souhaitez faire (ADD, SEARCH or EXIT) : " << std::endl;
 		std::getline(std::cin, cmd);
 		if (cmd == "ADD")
-			PhoneBook.Add_Contact();
-		if (cmd == "SEARCH")
-			PhoneBook.Search_Contact();
-		if (cmd == "EXIT")
+			PhoneBook.addContact();
+		else if (cmd == "SEARCH")
+			PhoneBook.searchContact();
+		else if (cmd == "EXIT")
 			break ;
 		else
 			std::cout << " Votre commande n'est pas une commande valide, veuillez entrer un des 3 choix proposes auparavant" << std::endl;
